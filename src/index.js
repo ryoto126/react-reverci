@@ -125,13 +125,13 @@ class Board extends React.Component {
             let nx = i + dx[dir];
             let ny = j + dy[dir];
             if (!this.isInside(nx, ny)) continue;
-            if (squares[nx][ny] != (!player)) continue; //隣接したマスに相手の石が置かれていなければならない
+            if (squares[nx][ny] !== (!player)) continue; //隣接したマスに相手の石が置かれていなければならない
             for (let k = 0; k < BOARD_SIZE; k++) {
                 nx += dx[dir];
                 ny += dy[dir];
                 if (!this.isInside(nx, ny)) break;
                 if (squares[nx][ny] == null) break;
-                if (squares[nx][ny] == player) return true;
+                if (squares[nx][ny] === player) return true;
             }
         }
         return false;
@@ -148,17 +148,17 @@ class Board extends React.Component {
         for (let dir = 0; dir < 8; dir++) {
             let nx = i + dx[dir], ny = j + dy[dir];
             if (!this.isInside(nx, ny)) continue;
-            if (squares[nx][ny] != (!player)) continue;
+            if (squares[nx][ny] !== (!player)) continue;
             for (let k = 0; k < BOARD_SIZE; k++) {
                 nx += dx[dir];
                 ny += dy[dir];
                 if (!this.isInside(nx, ny)) break;     //はみ出たらアウト
-                if (squares[nx][ny] == '.') break;  //空きマスでもアウト
+                if (squares[nx][ny] === '.') break;  //空きマスでもアウト
 
                 // i,jからnx,nyまで全部ひっくり返す
-                if (squares[nx][ny] == player) {
+                if (squares[nx][ny] === player) {
                     let x = i + dx[dir], y = j + dy[dir];
-                    while (x != nx || y != ny) {
+                    while (x !== nx || y !== ny) {
                         squares[x][y] = player;  //ひっくり返す
                         x += dx[dir];
                         y += dy[dir];
@@ -182,8 +182,8 @@ class Board extends React.Component {
     countDisks() {
         let ret = [0, 0];
         for (let i = 0; i < BOARD_SIZE; i++)for (let j = 0; j < BOARD_SIZE; j++) {
-            if (this.state.squares[i][j] == true) ret[1] += 1;
-            else if (this.state.squares[i][j] == false) ret[0] += 1;
+            if (this.state.squares[i][j] === true) ret[1] += 1;
+            else if (this.state.squares[i][j] === false) ret[0] += 1;
         }
         return ret;
     }
