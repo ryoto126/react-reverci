@@ -18,7 +18,7 @@ body {
   }
   
   .square {
-    background: #fff;
+    background:green;
     border: 1px solid #999;
     float: left;
     font-size: 24px;
@@ -49,3 +49,12 @@ body {
     margin-left: 20px;
   }
   
+  .circle {
+    background-color:green;
+    width: 26px;
+    height: 26px;
+    display: inline-block;
+    border-radius: 50%;
+    margin-right: auto;
+    margin-top: 3px;
+  }
